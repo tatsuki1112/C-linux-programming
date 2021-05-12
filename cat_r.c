@@ -31,8 +31,9 @@ static void do_read()
 	unsigned char buf[BUFFER_SIZE];
 	int n;
 
-	n = read(0, buf, sizeof buf);
 	for (;;) {
+		
+		n = read(STDIN_FILENO, buf, sizeof buf);
 		if (n < 0) exit(1);
 		if (n == 0) break;
 		if (write(STDOUT_FILENO, buf, n) < 0) exit(1);
